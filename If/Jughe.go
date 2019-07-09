@@ -1,5 +1,10 @@
 package If
 
+import (
+	"crypto/rand"
+	"math/big"
+)
+
 // 返回两个数中较大的那一个
 func Judge(First, Second int64) interface{} {
 	return If(First >= Second, First, Second)
@@ -101,5 +106,18 @@ func SortDesc(Arry []int64) []int64 {
 // 求平均数
 func Average(Arry []int64) float64 {
 	sum := Sum(Arry)
-	return float64(sum)/float64(len(Arry))
+	return float64(sum) / float64(len(Arry))
 }
+
+// 取两个数之间的随机数
+func Intn(First, Second int64) int64 {
+	maxBigInt := big.NewInt(Second)
+RET:
+	i, _ := rand.Int(rand.Reader, maxBigInt)
+	if i.Int64() < First {
+		goto RET
+	}
+	return i.Int64()
+}
+
+//
