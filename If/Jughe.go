@@ -119,5 +119,3 @@ RET:
 	}
 	return i.Int64()
 }
-
-//
